@@ -14,7 +14,7 @@ bool WindowHook::Initialize() {
 
     m_windowHandle = ::FindWindow( TARGET_WINDOW, NULL );
 
-	SetWindowLongPtr( m_windowHandle, GWL_STYLE, GetWindowLongPtr( m_windowHandle, GWL_STYLE ) | WS_SIZEBOX | WS_MINIMIZEBOX | WS_MAXIMIZEBOX );
+    SetWindowLongPtr( m_windowHandle, GWL_STYLE, GetWindowLongPtr( m_windowHandle, GWL_STYLE ) | WS_SIZEBOX | WS_MINIMIZEBOX | WS_MAXIMIZEBOX );
 
     oWndProc = ( WNDPROC )SetWindowLongPtr( m_windowHandle, GWLP_WNDPROC, ( LONG_PTR )MainWndProc );
 
@@ -39,10 +39,10 @@ void WindowHook::OnResize() {
     int width = rect.right - rect.left;
     int height = rect.bottom - rect.top;
 
-	if ( height > width ) // game freaks out if we don't handle this
-		return;
+    if ( height > width ) // game freaks out if we don't handle this
+	return;
 
-	Game::Instance()->UpdateWindowRect( width, height );
+    Game::Instance()->UpdateWindowRect( width, height );
 }
 
 LRESULT WindowHook::WndProc( HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam ) {
