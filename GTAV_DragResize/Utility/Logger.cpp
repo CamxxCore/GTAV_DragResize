@@ -19,9 +19,9 @@ void Logger::Write( const char * format, ... ) const {
     ofs << str;
     ofs.close();
 
-    //#ifdef _DEBUG
+#ifdef _DEBUG
     OutputDebugStringA( str.c_str() );
-    //#endif
+#endif
 }
 
 void Logger::Remove() const {
