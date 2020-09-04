@@ -48,6 +48,10 @@ void WindowHook::OnResize() {
 LRESULT WindowHook::WndProc( HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam ) {
 
     switch ( uMsg ) {
+    case WM_ACTIVATE:
+        SetWindowPos(hwnd, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+        break;
+
     case WM_SIZING:
         return 0;
 
